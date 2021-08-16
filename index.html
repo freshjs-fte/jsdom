@@ -10,11 +10,15 @@
     <script defer src="./counter.js"></script>
 
     <style>
+      .slider {
+        display: flex;
+        align-items: stretch;
+      }
       .display {
         /* 10 */
         border: 3px solid black;
-        height: 20px;
-        width: 100px;
+        height: 300px;
+        width: 300px;
       }
       .displayGreen {
         border: 3px solid green;
@@ -24,17 +28,49 @@
         border: 3px solid #aa0000;
         background-color: #ff0000;
       }
+      .slides-circles {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+      }
+      .circle {
+        width: 10px;
+        height: 10px;
+        background-color: rgb(90, 126, 126);
+        border-radius: 50%;
+      }
     </style>
   </head>
   <body>
-    <button onclick="addOne()">Добавить 1</button>
-    <button onclick="decrementOne()">Отнять 1</button>
-    <button onclick="resetCounter()">Сброс</button>
-    <div id="counterDisplay" class="display">
+    <div class="slider" id="slider">
+      <button onclick="decrementOne()" class="">
+        <svg
+          style="transform: rotate(180deg)"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+          />
+        </svg>
+      </button>
 
+      <div style="position: relative;">
+        <img id="sliderDisplay" class="display" />
+        <div class="slides-circles">
+        </div>
+      </div>
+
+      <button onclick="addOne()" class="">
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path
+            d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+          />
+        </svg>
+      </button>
     </div>
-    <img src="" alt="">
-
-    <button onclick="addUserNumber()">Добавить ваше число</button>
+    <!-- <button onclick="addUserNumber()">Добавить ваше число</button> -->
   </body>
 </html>
