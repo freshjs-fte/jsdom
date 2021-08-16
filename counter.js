@@ -3,34 +3,31 @@ let counterNumber = 0;
 const counterDisplay = document.querySelector("#counterDisplay");
 
 function displayNumber(addClass) {
-  let { style, classList } = counterDisplay;
+  // деструктуризация:
 
+  // если конечная переменная - обьект
+  // то можно изменять содержимое, т.к обьект это ссылка
+  // если конечная переменная - примитив,
+  // то значения только для чтения
+  let { classList } = counterDisplay;
+  
   if (counterNumber === 0) {
-    style.border = "3px solid black";
+    classList.remove("displayRed", "displayGreen");
   } else {
     /* 
         1) создать классы для зеленого и красного состояния дисплея
         2) добавлять или заменять css класс диплея
         с помощью classList add или replace или remove
     */
+
+    if (addClass === "displayGreen") {
+      classList.remove("displayRed");
+      classList.add("displayGreen");
+    } else {
+      classList.remove("displayGreen");
+      classList.add("displayRed");
+    }
   }
-
-  console.log(classList);
-    classList.add("newClassName", "myClass")
-    classList.replace("что заменить", "на что заменить")
-
-  // деструктуризация:
-
-  // если конечная переменная - обьект
-  // то можно изменять содержимое, т.к обьект это ссылка
-
-  // если конечная переменная - примитив,
-  // то значения только для чтения
-
-  /* 
-    style.border = "3px solid " + borderColor;
-    style.backgroundColor = backgroundColor;
-  } */
 
   counterDisplay.textContent = counterNumber;
 }
@@ -40,7 +37,7 @@ function addOne() {
   counterNumber++;
   console.log(counterNumber);
 
-  displayNumber("green", "#00ff00");
+  displayNumber("displayGreen");
 }
 
 function decrementOne() {
@@ -48,7 +45,7 @@ function decrementOne() {
   counterNumber--;
   console.log(counterNumber);
 
-  displayNumber("#aa0000", "#ff0000");
+  displayNumber("displayRed");
 }
 
 function addUserNumber() {
